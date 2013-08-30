@@ -1,0 +1,25 @@
+{
+  "name": "pyandex-browser",
+  "version": "0.0.0",
+  "homepage": "https://github.com/pahaz/pyandex_game",
+  "authors": [
+    "pahaz"
+  ],
+  "description": "small game for yandex",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.0.0",
+    "jquery": "~2.0.3",
+    "requirejs-text": "~2.0.10",
+    "requirejs": "~2.1.8",
+    "underscore-amd": "~1.5.1"
+  }
+}
