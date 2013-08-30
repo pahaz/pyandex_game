@@ -3,17 +3,21 @@ PYANdex game
 
 PYANdex - карточная игра "пьяница" для компании yandex
 
+lib - логика игры.
+client - браузерная игра (client-side).
+server - пример работы игровой логики на стороне сервера (node.js / server-side).
+
 HowTo
 -----
 
-    # server tests run
+    # server-side tests run
     cd server
     npm install
     npm start
 
     cd ..
 
-    # browser run
+    # run game
     cd client
     bower install
     cd ..
