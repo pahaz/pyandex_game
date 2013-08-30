@@ -12,6 +12,6 @@ HowTo
 
     cd ..
 
-    cd client
-    open index.html
+    python -m SimpleHTTPServer 8000
+    open http://172.0.0.1:8000/client/
 
