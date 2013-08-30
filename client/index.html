@@ -1,10 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>PYANdex game</title>
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
     <script data-main="js/app.js" src="bower_components/requirejs/require.js" type="text/javascript"></script>
 </head>
 <body>
+<div class="container">
+    <h1>PYANdex game</h1>
+</div>
+<form class="game_form" id="game_begin_form">
+    <h2>выбери кол-во игроков:</h2>
+
+    <p>
+        <label> <input type="radio" name="radios" value="2"> 2 </label>
+        <label> <input type="radio" name="radios" value="3"> 3 </label>
+        <label> <input type="radio" name="radios" value="4"> 4 </label>
+        <label> <input type="radio" name="radios" value="5"> 5 </label>
+        <label> <input type="radio" name="radios" value="6"> 6 </label>
+        <label> <input type="radio" name="radios" value="7"> 7 </label>
+        <label> <input type="radio" name="radios" value="8"> 8 </label>
+        <label> <input type="radio" name="radios" value="9"> 9 </label>
+    </p>
+    <p>
+        <label> <input type="radio" name="radios" value="10"> 10 </label>
+        <label> <input type="radio" name="radios" value="11"> 11 </label>
+        <label> <input type="radio" name="radios" value="12"> 12 </label>
+        <label> <input type="radio" name="radios" value="13" checked="checked"> 13 </label>
+    </p>
+    <button class="btn btn-success" id="start_button">Начать</button>
+</form>
+<div id="game_map">
+    <div class="player back_cards">
+        <p class="player_name">asdasd</p>
+        <img class ="one_card" src="img/cards/10_of_clubs.png"/>
+        <span class="player_card_count">22</span>
+    </div>
+    <div class="player back_cards">
+        <p class="player_name">asdasd</p>
+        <img class ="one_card" src="img/cards/10_of_clubs.png"/>
+        <span class="player_card_count">22</span>
+    </div>
+    <div class="player back_cards">
+        <p class="player_name">asdasd</p>
+        <img class ="one_card" src="img/cards/10_of_clubs.png"/>
+        <span class="player_card_count">22</span>
+    </div>
+</div>
+<form class="game_form" id="game_control_form">
+    <button class="btn btn-success" id="fast_game">  быстрая игра </button>
+    <button class="btn btn-success" id="next_round"> -&gt </button>
+</form>
+<div id="log"></div>
 </body>
 </html>

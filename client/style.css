@@ -1,0 +1,141 @@
+body {
+    font-family: Tahoma, serif;
+    font-size: 12px;
+    background: url(http://iamgambler.com/wp-content/uploads/poker_club.jpg) no-repeat 50% 0 #000000;
+    padding-bottom: 20%;
+}
+
+h1 {
+    text-align: center;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 0 0 10px white;
+}
+
+#log {
+    position: fixed;
+    bottom: 0;
+    height: 20%;
+    min-height: 50px;
+    width: 100%;
+    padding: 20px;
+    background: #000000;
+    color: #808080;
+    opacity: 0.80;
+    overflow-y: scroll;
+}
+
+.game_form {
+    opacity: .97;
+    padding: 20px;
+    margin: 10px auto;
+    width: 350px;
+    background: white;
+    text-align: center;
+    box-shadow: 0 0 5px black;
+    border-radius: 4px;
+}
+
+.game_form > h2 {
+    font-size: 20px;
+    margin: 0 10px 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.game_form label {
+    margin-right: 4px;
+    font-size: 15px;
+}
+
+.game_form > button {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#game_control_form {
+    width: 250px;
+    padding: 0;
+    border-radius: 0;
+}
+
+#game_control_form button {
+    margin: 0;
+    border-radius: 0;
+}
+
+#game_map {
+    margin: 0 auto;
+    width: 70%;
+    min-width: 610px;
+    display: table;
+}
+
+.player {
+    position: relative;
+    background: white;
+    width: 300px;
+    height: 300px;
+    float: left;
+    margin: 2px;
+    padding-left: 10px;
+    opacity: 0.97;
+}
+
+.back_cards
+{
+    background: url(img/player_cards.png) no-repeat white;
+    background-position:-180px 15px;
+}
+
+.one_card
+{
+    width:125px;
+    position:absolute;
+    left: 160px;
+    top: 100px;
+}
+.add_card
+{
+    position:absolute;
+    width: 190px;
+    left: 130px;
+    top: 80px;
+}
+
+.player_card_count
+{
+    position:absolute;
+    left: 30px;
+    top: 235px;
+    font-size:40px;
+}
+
+.player_card_count:after {
+    content: " карт(ы)";
+    font-size: 18px;
+}
+
+.player_name
+{
+    position:absolute;
+    left: 20px;
+    top: 5px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.round_winner > .one_card
+{
+    box-shadow: 0 0 40px rgb(255,0,0);
+}
+
+.dispute > .one_card
+{
+    box-shadow: 0 0 40px rgb(50,50,255);
+}
+
+
+
+
+

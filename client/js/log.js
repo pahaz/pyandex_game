@@ -4,8 +4,8 @@
  * Time: 2:50
  */
 
-define(function(){
-   return function(msg) {
-       document.write(msg);
-   }
+define(['jquery'], function ($) {
+    return function (msg) {
+        $('#log').append(msg + "<br>").scrollTop(100000);
+    }
 });

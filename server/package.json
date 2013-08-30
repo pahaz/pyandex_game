@@ -3,9 +3,7 @@
     "version": "0.0.1",
     "private": true,
     "scripts": {
-        "start": "node app",
-        "run": "node app",
-        "test": "nodeunit test"
+        "start": "node app"
     },
     "dependencies": {
         "requirejs": ">2.1.0",
