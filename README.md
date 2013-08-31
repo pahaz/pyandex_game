@@ -1,11 +1,13 @@
 PYANdex game
 ============
 
-PYANdex - карточная игра "пьяница" для компании yandex
+**PYANdex** - карточная игра "пьяница" для компании yandex
 
-lib - логика игры.
-client - браузерная игра (client-side).
-server - пример работы игровой логики на стороне сервера (node.js / server-side).
+### [Пример работы](http://dev.urfuclub.ru/pyandex/client/) ###
+
+`lib` - логика игры.  
+`client` - браузерная игра (client-side).  
+`server` - пример работы игровой логики на стороне сервера (node.js / server-side).
 
 HowTo
 -----
