@@ -128,13 +128,14 @@ define(["pyandex/core", 'text!templates/player.html', 'underscore', 'jquery', "p
             var player_is_old_round_disputer = old_round_state_is_dispute ? _.indexOf(old_round_disputers, i) != -1 : false;
             var player_card_on_table = players_cards[i].number != 0;
             var player_is_round_winner = state_is_victory ? i == state_args[0] : false;
+            var player_is_game_winner = state_is_game_over ? i == state_args[0] : false;
 
             if (player_card_on_table) {
                 cards_on_table_count += 1;
                 player_count_cards -= 1; // one card on table
             }
 
-            if (player_count_cards == 0 && !player_is_round_winner) {
+            if (player_count_cards == 0 && !player_is_round_winner && !player_is_game_winner) {
                 // if them disputer may be not hide?
                 $child.eq(i).fadeOut(1000 + _.random(0, 15000));
             }
@@ -188,13 +189,12 @@ define(["pyandex/core", 'text!templates/player.html', 'underscore', 'jquery', "p
         var that = this;
         var handler;
         var work = function () {
-            var ret = that.play_round();
+            that.play_round();
             if (that.game.game_is_over()) {
+                var ret = that.play_round();
+                if (ret) that.play_round();
                 alert("GAME OVER");
                 clearInterval(handler);
-
-                // correct if play_round not call
-                if (ret != 0) that.play_round();
             }
         };
         handler = setInterval(work, 100);
