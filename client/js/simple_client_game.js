@@ -97,7 +97,7 @@ define(["pyandex/core", 'text!templates/player.html', 'underscore', 'jquery', "p
 
             $child.eq(i).find('.player_card_count').text(count);
             if (count == 0) {
-                $child.eq(i).removeClass('back_cards').fadeOut(5000 + _.random(0, 20000));
+                $child.eq(i).fadeOut(1000 + _.random(0, 15000));
             }
 
             $child.eq(i).removeClass('round_winner').removeClass('dispute');
