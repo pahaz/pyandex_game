@@ -142,6 +142,18 @@ h1 {
     background: rgb(50,50,250) !important;
 }
 
+.no_more_card_for_dispute > .player_card_count
+{
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+
+    text-shadow: 0 0 20px #F00;
+    color: #F00;
+}
+
 
 
 

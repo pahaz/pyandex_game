@@ -29,20 +29,22 @@ require(["simple_client_game", 'log', 'pyandex/test', 'underscore', 'jquery'], f
     var game = new SimpleGame($game_map, function(winnder) {alert("ВЫИГРАЛ #" + (winnder+1));});
 
     $game_map.hide();
+
     $game_control_form.hide();
+    var $fast_button = $game_control_form.find('#fast_game');
+    var $next_round = $game_control_form.find('#next_round');
 
     $game_begin_form.find('button').one("click", function (event) {
         event.preventDefault();
         var count_of_players = +$game_begin_form.find('input:radio:checked').val();
         $game_begin_form.hide();
         $game_control_form.show();
+        $next_round.focus();
         log("PYANdex start for " + count_of_players + " users");
 
         game.start(count_of_players);
     });
 
-    var $fast_button = $game_control_form.find('#fast_game');
-    var $next_round = $game_control_form.find('#next_round');
     $fast_button.one("click", function (event) {
         event.preventDefault();
         $fast_button.attr("disabled", "disabled");
