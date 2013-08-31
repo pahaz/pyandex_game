@@ -102,6 +102,7 @@ define(["pyandex/core", 'text!templates/player.html', 'underscore', 'jquery', "p
         var state_array = this.game.get_round_state_array();
         var state = state_array[0];
         var state_is_dispute = Game.states.dispute_in_round == state;
+        var state_is_victory = Game.states.victory_in_round == state;
         var state_is_game_over = state == Game.states.game_over;
 
         var state_args = state_array.slice(1);
@@ -126,13 +127,14 @@ define(["pyandex/core", 'text!templates/player.html', 'underscore', 'jquery', "p
             var player_is_disputer = state_is_dispute ? _.indexOf(state_args, i) != -1 : false;
             var player_is_old_round_disputer = old_round_state_is_dispute ? _.indexOf(old_round_disputers, i) != -1 : false;
             var player_card_on_table = players_cards[i].number != 0;
+            var player_is_round_winner = state_is_victory ? i == state_args[0] : false;
 
             if (player_card_on_table) {
                 cards_on_table_count += 1;
                 player_count_cards -= 1; // one card on table
             }
 
-            if (player_count_cards == 0) {
+            if (player_count_cards == 0 && !player_is_round_winner) {
                 // if them disputer may be not hide?
                 $child.eq(i).fadeOut(1000 + _.random(0, 15000));
             }
