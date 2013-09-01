@@ -58,10 +58,11 @@ define(["pyandex/core", 'text!templates/player.html', 'underscore', 'jquery', "p
 
         var players_count_cards = this.game.get_players_pack_of_cards_count_array();
         var players_cards = this.game.get_players_round_cards_array();
-        var old_round_state_is_dispute = this.old_raund_state_array[0] == Game.states.dispute_in_round;
         var old_round_state_is_victory = this.old_raund_state_array[0] == Game.states.victory_in_round;
+        var old_round_state_is_super_dispute = this.old_raund_state_array[0] == Game.states.disputers_not_have_card_then_super_dispute_in_round;
+        var old_round_state_is_dispute = this.old_raund_state_array[0] == Game.states.dispute_in_round
+            || old_round_state_is_super_dispute;
         var old_round_disputers = old_round_state_is_dispute ? this.old_raund_state_array.slice(1) : [];
-
 
         var $child = this.$map.children();
 
@@ -77,7 +78,7 @@ define(["pyandex/core", 'text!templates/player.html', 'underscore', 'jquery', "p
                 var player_disputer_index = this.old_raund_state_array[i];
 
                 if (this.old_round_players_count_cards_array[player_disputer_index] >= 2 ||
-                    (this.old_round_super_dispute_detected &&
+                    (old_round_state_is_super_dispute &&
                         this.old_round_players_count_cards_array[player_disputer_index] == 1)) { // 2 = one on table + one for dispute
                     // add imd
                     $child.eq(player_disputer_index).append("<img class=\"add_card\" src=\"img/shrit_card.png\">");
@@ -86,7 +87,7 @@ define(["pyandex/core", 'text!templates/player.html', 'underscore', 'jquery', "p
                     $child.eq(player_disputer_index).addClass('no_more_card_for_dispute');
                 } else {
                     // may be if disputers_not_have_card on disputer
-                    if (!this.old_round_super_dispute_detected) {
+                    if (!old_round_state_is_super_dispute) {
                         log("<script>alert('REAL BUG DETECTED!');</script>BUG DETECTED!");
                     }
                 }
@@ -101,14 +102,15 @@ define(["pyandex/core", 'text!templates/player.html', 'underscore', 'jquery', "p
 
         var state_array = this.game.get_round_state_array();
         var state = state_array[0];
-        var state_is_dispute = Game.states.dispute_in_round == state;
+        var state_is_super_dispute = Game.states.disputers_not_have_card_then_super_dispute_in_round == state;
+        var state_is_dispute = Game.states.dispute_in_round == state || state_is_super_dispute;
+        var state_is_game_over = Game.states.game_over == state;
         var state_is_victory = Game.states.victory_in_round == state;
-        var state_is_game_over = state == Game.states.game_over;
 
         var state_args = state_array.slice(1);
 
         // log
-        var repr_for_states = ["--", "GAME OVER WINN ", "PLAYER WINN ROUND ", "DISPUTE "];
+        var repr_for_states = ["--", "GAME OVER WINN ", "PLAYER WINN ROUND ", "DISPUTE ", "SUPER DISPUTE "];
         var end_of_message = _.map(state_args,function (v) {
             return v + 1;
         }).join(' ');
@@ -124,8 +126,8 @@ define(["pyandex/core", 'text!templates/player.html', 'underscore', 'jquery', "p
         var cards_on_table_count = 0;
         for (var i = 0; i < this.game.get_count_players(); i++) {
             var player_count_cards = players_count_cards[i];
-            var player_is_disputer = state_is_dispute ? _.indexOf(state_args, i) != -1 : false;
-            var player_is_old_round_disputer = old_round_state_is_dispute ? _.indexOf(old_round_disputers, i) != -1 : false;
+//            var player_is_disputer = state_is_dispute ? _.indexOf(state_args, i) != -1 : false;
+//            var player_is_old_round_disputer = old_round_state_is_dispute ? _.indexOf(old_round_disputers, i) != -1 : false;
             var player_card_on_table = players_cards[i].number != 0;
             var player_is_round_winner = state_is_victory ? i == state_args[0] : false;
             var player_is_game_winner = state_is_game_over ? i == state_args[0] : false;
